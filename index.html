@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Galería de imágenes rápida</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .gallery-container {
+            max-width: 1000px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 60vh;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnails {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .thumbnail {
+            flex: 1;
+            min-width: 100px;
+            max-width: 120px;
+            cursor: pointer;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .thumbnail img:hover {
+            transform: scale(2.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .thumbnails {
+                justify-content: center;
+            }
+
+            .thumbnail {
+                flex: 1 0 48%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-image {
+                height: 40vh;
+            }
+
+            .thumbnail {
+                flex: 1 0 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gallery-container">
+        <img src="https://via.placeholder.com/800x400" alt="Imagen principal" class="main-image" id="mainImage" loading="lazy">
+
+        <div class="thumbnails">
+            <div class="thumbnail" onclick="changeImage('https://via.placeholder.com/800x400')">
+                <img src="https://via.placeholder.com/150" alt="Thumbnail 1" loading="lazy">
+            </div>
+            <div class="thumbnail" onclick="changeImage('https://via.placeholder.com/800x400/ff7f7f')">
+                <img src="https://via.placeholder.com/150/ff7f7f" alt="Thumbnail 2" loading="lazy">
+            </div>
+            <div class="thumbnail" onclick="changeImage('https://via.placeholder.com/800x400/7fff7f')">
+                <img src="https://via.placeholder.com/150/7fff7f" alt="Thumbnail 3" loading="lazy">
+            </div>
+            <div class="thumbnail" onclick="changeImage('https://via.placeholder.com/800x400/7f7fff')">
+                <img src="https://via.placeholder.com/150/7f7fff" alt="Thumbnail 4" loading="lazy">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeImage(src) {
+            document.getElementById('mainImage').src = src;
+        }
+    </script>
+
+</body>
+</html>
